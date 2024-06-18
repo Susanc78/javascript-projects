@@ -38,7 +38,7 @@ if (fuelTempCelsius < minimumFuelTemp || fuelTempCelsius > maximumFuelTemp) {
 // add logic below to verify the fuel level is at 100%
 if (fuelLevel !== "100%") {
     preparedForLiftOff = false;
-    console.log("Please refuel before launc.h");
+    console.log("Please refuel before launch.");
 }
 // add logic below to verify the weather status is clear
 if (weatherStatus !== "clear") {
