@@ -1,5 +1,7 @@
-function randomFromArray(arr){
-  //Your code here to select a random element from the array passed to the function.
+function randomFromArray(array) {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
 }
-
-//TODO: Export the randomFromArray function.
+module.exports = {
+  randomFromArray,
+};

@@ -1,7 +1,11 @@
 //We want to COMPLETELY reverse an array by flipping the order of the entries AND flipping the order of characters in each element.
 
 // Part One: Reverse Characters
-
+function reverseCharacters(str) {
+    return str.split('').reverse().join('');
+}
+let myString = "hello";
+console.log(reverseCharacters(myString));
 // 1. Define the function as reverseCharacters. Give it one parameter, which will be the string to reverse.
 // 2. Within the function, split the string into an array, then reverse the array.
 // 3. Use join to create the reversed string and return that string from the function.
@@ -11,6 +15,15 @@
 
 // Part Two: Reverse Digits
 
+function reverseCharacters(input) {
+    if (typeof input === 'string') {
+        return input.split('').reverse().join('');
+    } else if (typeof input === 'number') {
+        return parseInt(input.toString().split('').reverse().join(''));
+    }
+}
+console.log(reverseCharacters(myString)); 
+console.log(reverseCharacters(1234));     
 // 1. Add an if statement to reverseCharacters to check the typeof the parameter.
 // 2. If typeof is ‘string’, return the reversed string as before.
 // 3. If typeof is ’number’, convert the parameter to a string, reverse the characters, then convert it back into a number.
@@ -18,6 +31,20 @@
 // 5. Be sure to print the result returned by the function to verify that your code works for both strings and numbers. Do this before moving on to the next exercise.
 
 // Part Three: Complete Reversal - Create a new function with one parameter, which is the array we want to change. The function should:
+let arrayTest1 = ['apple', 'potato', 'Capitalized Words'];
+let arrayTest2 = [123, 8897, 42, 1168, 8675309];
+let arrayTest3 = ['hello', 'world', 123, 'orange'];
+function completeReversal(arr) {
+    let reversedArray = [];
+    for (let i = 0; i < arr.length; i++) {
+        reversedArray.push(reverseCharacters(arr[i]));
+    }
+    return reversedArray.reverse();
+}
+
+console.log(completeReversal(arrayTest1)); // prints ["sdroW dezilatipaC", "otatop", "elppa"]
+console.log(completeReversal(arrayTest2)); // prints [9035768, 8611, 24, 7988, 321]
+console.log(completeReversal(arrayTest3)); // prints ["egnaro", 321, "dlrow", "olleh"]
 
 // 1. Define and initialize an empty array.
 // 2. Loop through the old array.
@@ -26,9 +53,6 @@
 // 5. Return the final, reversed array.
 // 6. Be sure to print the results from each test case in order to verify your code.
 
-let arrayTest1 = ['apple', 'potato', 'Capitalized Words'];
-let arrayTest2 = [123, 8897, 42, 1168, 8675309];
-let arrayTest3 = ['hello', 'world', 123, 'orange'];
 
 // Bonus Missions
 
@@ -38,6 +62,16 @@ let arrayTest3 = ['hello', 'world', 123, 'orange'];
 // 4. Use a template literal to return the phrase We put the '___' in '___'. Fill the first blank with the modified string, and fill the second blank with the original string.
 
 // Test Function
+function funPhrase(str) {
+    let modifiedStr = str.length <= 3 ? str.slice(-1) : str.slice(0, 3);
+    return `We put the '${modifiedStr}' in '${str}'.`;
+}
+
+// Example usage
+let str = 'Functions rock!';
+console.log(funPhrase(str)); // prints "We put the 'Fun' in 'Functions rock!'"
+console.log(funPhrase('cat')); // prints "We put the 't' in 'cat'"
+
 
 // 1. Outside of the function, define the variable str and initialize it with a string (e.g. 'Functions rock!').
 // 2. Call your function and print the returned phrase.
@@ -49,3 +83,16 @@ let arrayTest3 = ['hello', 'world', 123, 'orange'];
 // 3. Call your area function by passing in two arguments - the length and width.
 // 4. If only one argument is passed to the function, then the shape is a square. Modify your code to deal with this case.
 // 5. Use a template literal to print, “The area is ____ cm^2.”
+function calculateArea(length, width = length) {
+    return length * width;
+}
+
+// Example usage
+let length = 5;
+let width = 10;
+let area = calculateArea(length, width);
+console.log(`The area is ${area} cm^2.`); // prints "The area is 50 cm^2."
+
+let side = 7;
+let squareArea = calculateArea(side);
+console.log(`The area is ${squareArea} cm^2.`); // prints "The area is 49 cm^2."

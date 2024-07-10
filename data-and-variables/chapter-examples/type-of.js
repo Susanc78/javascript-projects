@@ -1,3 +1,3 @@
-console.log(typeof "Hello, World!");
-console.log(typeof 17);
-console.log(typeof 3.14);
+console.log(typeof "Hello, World!"); //string
+console.log(typeof 17); //number
+console.log(typeof 3.14); //number
