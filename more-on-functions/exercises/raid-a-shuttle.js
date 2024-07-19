@@ -34,7 +34,15 @@ console.log("Hold status: " + holdStatus(cargoHold));
 //c). Once you figure out how much fuel to pump out, return that value.
 
 //d). Decide where to best place your function call to gather our new fuel.
-
+let stealFuel = function(fuelLevel) {
+  if (fuelLevel > 150000) {
+    fuelLevel = fuelLevel - 50000;
+  }
+return fuelLevel;
+};
+fuelLevel = stealFuel(fuelLevel);
+console.log("Fuel level: " + checkFuel(fuelLevel));
+console.log("Hold status: " + holdStatus(cargoHold));
 /* Next, liberate some of that glorious cargo.
  */
 
@@ -45,7 +53,17 @@ console.log("Hold status: " + holdStatus(cargoHold));
 //c). The cargo hold has better security than the fuel tanks. It counts how many things are in storage. You need to replace what you steal with something worthless. The count MUST stay the same, or you’ll get caught and thrown into the LaunchCode brig.
 
 //d). Don’t get hasty, matey! Remember to test your function.
-
+let stealCargo = function(cargoHold) {
+  let stolenCargo = [];
+  stolenCargo.push(cargoHold.splice(4, 1)[0]); 
+  stolenCargo.push(cargoHold.splice(3, 1)[0]); 
+  cargoHold.push('empty box');
+  cargoHold.push('empty box');
+  return stolenCargo;
+};
+let stolenCargo = stealCargo(cargoHold);
+console.log("Hold status: " + holdStatus(cargoHold));
+console.log(stolenCargo);
 /* Finally, you need to print a receipt for the accountant. Don’t laugh! That genius knows MATH and saves us more gold than you can imagine.
  */
  
@@ -54,3 +72,9 @@ console.log("Hold status: " + holdStatus(cargoHold));
 //b). Call your anonymous fuel and cargo functions from within irs.
 
 //c). Use a template literal to return, "Raided _____ kg of fuel from the tanks, and stole ____ and ____ from the cargo hold."
+function irs(fuelLevel, cargoHold) {
+  let stolenFuel = stealFuel(fuelLevel);
+  let stolenCargo = stealCargo(cargoHold);
+  return `Raided ${stolenFuel} kg of fuel from the tanks, and stole ${stolenCargo[0]} and ${stolenCargo[1]} from the cargo hold.`;
+};
+console.log(irs(fuelLevel, cargoHold));
